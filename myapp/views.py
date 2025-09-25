@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.template import loader
+from django.http import HttpResponse, JsonResponse
+from .models import Task, Project
 
 # Create your views here.
 
@@ -18,3 +18,11 @@ def about (request):
     return HttpResponse(
         "About"
         )
+
+def projects(request):
+    projects = list(Project.objects.values())
+    return JsonResponse(projects, safe=False)
+
+def tasks(request,id):
+    tasks = Task.objects.get(id=id)
+    return HttpResponse('task: %s' % tasks.title)

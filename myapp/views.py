@@ -25,4 +25,4 @@ def projects(request):
 
 def tasks(request,id):
     tasks = Task.objects.get(id=id)
-    return HttpResponse('task: %s' % tasks.title)
+    return HttpResponse('tasks: %s' % tasks.title)

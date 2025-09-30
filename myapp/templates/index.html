@@ -1,9 +1,13 @@
 {% extends "layouts/base.html" %}
 
+{% load static %}
+
 {% block content %}
 
-
 <h1>{{title}}</h1>
+
+<img src="{% static 'logo.png' %}" alt="Logo Github" width="70">
+
 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat dolorum enim deserunt recusandae ad debitis temporibus tenetur fugit impedit corrupti cupiditate at adipisci, ab quasi! Beatae placeat iure possimus libero.</p>
 
 {% endblock %}

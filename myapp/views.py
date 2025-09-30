@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from .models import Task, Project
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .forms import CreateNewTask, CreateNewProject
 
 # Create your views here.
@@ -52,4 +52,11 @@ def create_project(request):
     else:
         Project.objects.create(name=request.POST['name'])
         return redirect('projects')
-    
+
+def project_detail(request, id):
+    project = get_object_or_404(Project, id=id)
+    tasks = Task.objects.filter(project_id=id)
+    return render(request, 'projects/detail.html', {
+        'project': project,
+        'tasks': tasks
+    })

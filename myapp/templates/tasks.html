@@ -1,4 +1,16 @@
 <h1>Tasks</h1>
 
-<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error quia, distinctio id iste nulla culpa labore! Magni quidem eius quae iusto, saepe commodi optio unde. Tempora similique sequi dicta praesentium!</p>
-
+{% for task in tasks %}
+<div>
+    {# esta es una tarea #}
+    <h1>{% if task.done == False %} ⏱ {% else %} ✅ {% endif %} {{ task.title }} </h1>    
+    <p>{{task.description}}</p>
+    <p>Project: {{task.project.name}}</p>
+    <button>
+        Delete
+    </button>
+    <button>
+        ✅ Done
+    </button>
+</div>
+{% endfor %}
